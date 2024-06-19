@@ -1,0 +1,21 @@
+const express = require('express')
+const router = express.Router()
+const moneyInController = require('../contollers/moneyInController')
+
+router.route('/')
+      .get(moneyInController.getAllMoneyInTransact)
+      .post(moneyInController.createMoneyInTransact)
+      .patch(moneyInController.updateMoneyInTransact)
+      .delete(moneyInController.deleteMoneyInTransact)
+router.route('/moneyInByDate')
+      .get(moneyInController.getAllMoneyInTransactByDate)
+router.route('/getNewItemsRow')
+      .get(moneyInController.getMoneyInNewItems)
+router.route('/moneyInByMonth')
+      .get(moneyInController.getMoneyInByMonth)
+router.route('/monthlyBalanceDue')
+      .get(moneyInController.getAllMonthlyBalanceDue)
+router.route('/moneyInByYear')
+      .get(moneyInController.getMoneyInByYear)
+
+module.exports = router

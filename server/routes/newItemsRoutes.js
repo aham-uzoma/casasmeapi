@@ -1,0 +1,15 @@
+const express = require('express')
+const router = express.Router()
+const newItemsController = require('../contollers/newItemsController')
+
+router.route('/')
+      .get(newItemsController.getAllNewItems)
+      .post(newItemsController.createNewItems)
+      .patch(newItemsController.updateNewItems)
+      .delete(newItemsController.deleteNewItems)
+router.route('/invData')
+      .post(newItemsController.createNewItems_product)
+router.route('/:id')
+      .get(newItemsController.getItemsById)
+      .patch(newItemsController.updateItemProperties)
+module.exports = router
