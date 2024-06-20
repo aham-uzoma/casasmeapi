@@ -12,8 +12,10 @@ const handleRefreshToken = async (req, res) => {
 
   if (!cookies?.jwt) return res.sendStatus(401) //unauthorized jwt
   const refreshToken = cookies.jwt
+  console.log('refreshTokenInCookies',refreshToken)
 
   const foundUserData2 = await User.findOne({ refreshToken }).exec()
+  console.log('foundRefresh:',foundUserData2)
   if (!foundUserData2) return res.sendStatus(403)//Forbidden
 
   //evaluate JWT
@@ -30,6 +32,7 @@ const handleRefreshToken = async (req, res) => {
         process.env.ACCESS_TOKEN_SECRET,
         { expiresIn: '40s' }
       )
+      console.log('accessTokenGenerated', accessToken)
       res.json({ accessToken, username })
     })
 
