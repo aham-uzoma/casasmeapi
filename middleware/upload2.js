@@ -8,7 +8,7 @@ const fs = require('fs');
 
 const storage = multer.diskStorage({
     destination: function (req, file, callback) {
-        callback(null, 'files/');
+        callback(null, 'public/files/');
     },
     filename: function (req, file, callback) {
         const filename = file.fieldname + "_" + Date.now() + path.extname(file.originalname)
