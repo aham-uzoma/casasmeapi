@@ -51,15 +51,11 @@ app.use(cors(corsOptions))
 
 app.use(express.json())
 
-// app.use(express.static('public'))
+ //app.use(express.static('files'))
 // app.use('/public', express.static(path.join(__dirname, '/public')))
 // app.use('/public/files/',express.static(__dirname + '/public/files/'));
-app.use('/static', express.static(path.join(__dirname, 'files')))
+app.use('/static', express.static(path.join(__dirname, './files')))
 // app.use('/static', express.static('files'))
-
-
-
-
 app.use(cookieparser())
 
 app.use('/', require('./routes/root'))// mounts the specified middleware functions at the path which is being specified
